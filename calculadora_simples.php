@@ -1,34 +1,51 @@
 <?php
-	
-	//Declaração de variáveis 
-	$valor1 = (double) 0;
-	$valor2 = (double) 0;
-	$resultado = (double) 0;
-
-	if(isset($_POST['btncalc'])){
-	$valor1 = $_POST['txtn1'];
-	$valor2 = $_POST['txtn2'];
-	$escolha = $_POST['rdocalc'];
-	
-	if($_POST['txtn1']=="" || $_POST['txtn2']==""){
-		echo('<p class="msgErro">Informe os valores </p>');	
-	}else{
-	if(!is_numeric($valor1) || !is_numeric($valor2)){
-		echo('<p class="msgErro"> Digite apenas números </p>');
-	}else{
-	if(strchr($escolha, 'somar')){
-		$resultado = $valor1 + $valor2;
-	}else if(strchr($escolha, 'subtrair')){
-		$resultado = $valor1 - $valor2;
-	}else if(strchr($escolha, 'multiplicar')){
-		$resultado = $valor1 * $valor2;
-	}else{
-		$resultado = $valor1 / $valor2;
-	}
-	}
+    
+    //Declaração de variáveis 
+    $valor1 = (double) 0;
+    $valor2 = (double) 0;
+    $resultado = (double) 0;
+ 
+    if(isset($_POST['btncalc'])){
+    $valor1 = $_POST['txtn1'];
+    $valor2 = $_POST['txtn2'];
+    $escolha = $_POST['rdocalc'];
+    
+    if($_POST['txtn1']=="" || $_POST['txtn2']==""){
+        echo('<p class="msgErro">Informe os valores </p>'); 
+    }else{
+    if(!is_numeric($valor1) || !is_numeric($valor2)){
+        echo('<p class="msgErro"> Digite apenas números </p>');
+    }else{
+    // if(strchr($escolha, 'somar')){
+    //  $resultado = $valor1 + $valor2;
+    // }else if(strchr($escolha, 'subtrair')){
+    //  $resultado = $valor1 - $valor2;
+    // }else if(strchr($escolha, 'multiplicar')){
+    //  $resultado = $valor1 * $valor2;
+    // }else{
+    //  $resultado = $valor1 / $valor2;
+    // }
+ 
+    //Outra maneira de desobrir qual opção o usuário escolheu
+    switch($escolha){
+        case "somar":
+            $resultado = $valor1 + $valor2;
+        break;
+        case "subtrair":
+            $resultado = $valor1 - $valor2;
+        break;
+        case "multiplicar":
+            $resultado = $valor1 * $valor2;
+        break;
+        case "dividir":
+            $resultado = $valor1 / $valor2;
+    }
+    }
 }
+ 
 }
 ?>
+
 <html>
     <head>
         <title>Calculadora - Simples</title>
